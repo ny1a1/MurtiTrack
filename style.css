@@ -25,3 +25,57 @@ body {
 .button:hover {
     background-color: #0078e0;
 }
+
+#input-create-chat {
+    width: 250px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border-width: 5px;
+    border: solid 4px #008CFF;
+}
+
+#button-create-chat {
+    margin: 10px;
+}
+
+#input-type-chat-password {
+    width: 250px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border-width: 5px;
+    border: solid 4px #008CFF;
+}
+
+#button-go-to-chat {
+    margin: 10px;
+    padding: 15px 20px;
+}
+
+#button-go-to-chat-copy {
+    margin: 10px;
+    padding: 15px 50px;
+}
+
+#input-go-to-chat {
+    width: 350px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border-width: 5px;
+    border: solid 4px #008CFF;
+}
+
+.chat {
+    padding: 10px;
+}
+
+#input-chat {
+    width: 830px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border-width: 5px;
+    border: solid 4px #008CFF;
+}
