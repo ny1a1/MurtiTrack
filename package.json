@@ -1,3 +1,4 @@
+
 {
   "name": "express-static-server",
   "version": "1.0.0",
@@ -9,8 +10,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.0"
+    "express": "^4.21.1",
+    "server": "^0.0.3",
+    "websocket": "^1.0.35",
+    "ws": "github:websockets/ws"
   },
-  "devDependencies": {},
   "description": ""
 }
