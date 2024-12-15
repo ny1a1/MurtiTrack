@@ -1,0 +1,19 @@
+
+{
+  "name": "express-static-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1",
+    "server": "^0.0.3",
+    "websocket": "^1.0.35",
+    "ws": "github:websockets/ws"
+  },
+  "description": ""
+}

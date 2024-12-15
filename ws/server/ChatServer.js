@@ -25,7 +25,8 @@ class ChatServer {
 
     onMessage(ws, data) {
         const msgObject = JSON.parse(data.toString());
-        console.log(msgObject);
+
+      console.log(msgObject);
 
         switch (msgObject.type) {
             case 'message': {
@@ -47,7 +48,7 @@ class ChatServer {
             username: msgObject.data.username,
             sessionId: msgObject.sessionId
         });
-        
+
         this.clientsMap.set(client.sessionId, client);
         console.log(`Client ${client.username} connected`);
     }
