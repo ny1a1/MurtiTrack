@@ -1,18 +1,28 @@
 const express = require('express');
+const http = require('http');
+const { Server } = require('socket.io');
 const path = require('path');
 
 const app = express();
+const server = http.createServer(app);
+const io = new Server(server);
 
-// Налаштування статичної папки
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Маршрут для головної сторінки
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+io.on('connection', (socket) => {
+    console.log('A user connected:', socket.id);
+
+    socket.on('chat message', (msg) => {
+        console.log('Message received:', msg);
+        io.emit('chat message', msg);
+    });
+
+    socket.on('disconnect', () => {
+        console.log('A user disconnected:', socket.id);
+    });
 });
 
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
+// Запускаємо сервер
+server.listen(3000, () => {
+    console.log('Server is running on http://localhost:3000');
 });
