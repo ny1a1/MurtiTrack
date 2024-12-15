@@ -20,13 +20,13 @@ class ChatServer {
 
     onConnection(ws) {
         console.log('new connection');
-
         ws.on('message', (data) => this.onMessage(ws, data));
     }
 
     onMessage(ws, data) {
         const msgObject = JSON.parse(data.toString());
-        console.log(msgObject)
+
+      console.log(msgObject);
 
         switch (msgObject.type) {
             case 'message': {
@@ -43,16 +43,6 @@ class ChatServer {
     }
 
     createClient(ws, msgObject) {
-        const isClientExists = this.clientsMap.get(msgObject.sessionId);
-
-        if (isClientExists) {
-            const client = this.clientsMap.get(msgObject.sessionId);
-            client.updateWS(ws);
-
-            console.log(`Client ${client.username} reconnected`);
-            return;
-        }
-
         const client = new Client({
             ws: ws,
             username: msgObject.data.username,
@@ -66,16 +56,17 @@ class ChatServer {
     broadcast(msgObject) {
         const sender = this.clientsMap.get(msgObject.sessionId);
         console.log(msgObject);
+
         this.clientsMap.forEach((client) => {
-           if(client.ws.readyState === WebSocket.OPEN && client.sessionId !== msgObject.sessionId) {
-               client.send({
-                     type: 'message',
-                     data: {
-                          sender: sender.username,
-                          message: msgObject.data
-                     }
-               });
-           }
+            if (client.ws.readyState === WebSocket.OPEN && client.sessionId !== msgObject.sessionId) {
+                client.send({
+                    type: 'message',
+                    data: {
+                        sender: sender.username,
+                        message: msgObject.data.message
+                    }
+                });
+            }
         });
     }
 }
